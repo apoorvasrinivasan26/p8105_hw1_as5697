@@ -10,20 +10,24 @@ output: github_document
 **This problem focuses on variable types and coercion.**
 
 
-```{r hw1_problem1.1, include = FALSE}
-##loading the library tidyverse but not displaying it in the output
- library(tidyverse)
-```
 
-_The code chunk below creates a data frame of a random sample of size 10, a logical vector indicating whether elements of the sample are greater than 2, a character and a factor vector._
+_The code chunk below creates a data frame of a random sample of size 10 between 0 and 5, a logical vector indicating whether elements of the sample are greater than 2, a character and a factor vector._
 
-```{r}
+```{r hw1_problem1.1}
+library(tidyverse)
+set.seed(1)
 problem1_df = tibble(
-  rsamp = runif(10, 0, 5),
-  vec_log = rsamp > 2,
-  vec_char = c("I", "hope", "I", "did", "okay", "for", "my", "first", "P8105", "homework"),
-  vec_fac = factor(c("heads", "tails", "heads", "heads", "tails", "heads", "tails", "tails", "heads", "tails"))
+rsamp = runif(10, 0, 5),
+vec_log = rsamp > 2,
+vec_char = c("I", "hope", "I", "did", "okay", "for", "my", "first", "P8105", "homework"),
+
+vec_fac = factor(c("heads", "tails", "heads", "heads", "tails", "heads", "tails", "tails", "heads", "tails"))
+
+
 )
+
+
+
 ```
 
 
@@ -37,5 +41,21 @@ mean(problem1_df$vec_char)
 mean(problem1_df$vec_fac)
 ```
 
-We observe that the random sample and logical vector return a value of 1.935042 and 0.4 respectively. However, we do not get any results for the factor and character variables. This is due to a numeric value attached to the first two vectors so mathematical operations on it is made possible. In the case of character and factor variable types, since they contain strings and do not posses a numerical value hence the mean cannot be found. 
+We observe that the random sample and logical vector return a mean of ~2.76 and ~0.6 respectively. However, we do not get any results for the factor and character variables. This is due to a numeric value attached to the first two vectors so mathematical operations on it is made possible. In the case of character and factor variable types, since they contain strings and do not posses a numerical value hence the mean cannot be found. 
 
+
+_Onto converting variable types_
+```{r hw1_problem1.3, WARNING = FALSE}
+as.numeric(problem1_df$vec_log)
+as.numeric(problem1_df$vec_char)
+as.numeric(problem1_df$vec_fac)
+```
+
+*   On converting the logical variable to numeric type, R assigns '0' each FALSE condition i.e. for each value from the random sample less than 2 and a '1' for a TRUE condition i.e. every value which is greater than 2.
+*   For the character variable type, the numeric conversion returned nothing since it could not assign a numeric value to random letters
+*  In the conversion of factor to numerical type, R assigns the value '1' to heads and '2' to tails.
+
+```{r hw1_problem1.4, warning = FALSE}
+as.numeric(as.factor(problem1_df$vec_char))
+as.numeric(as.character(problem1_df$vec_fac))
+```
