@@ -1,15 +1,13 @@
 ---
-title: "Homework_1"
+title: "Homework 1"
 author: "Apoorva Srinivasan"
 date: "9/20/2018"
 output: github_document
 ---
 
-#Problem_1
+#Problem 1
 
 **This problem focuses on variable types and coercion.**
-
-##Problem_1.1
 
 
 ```{r hw1_problem1.1, include = FALSE}
@@ -29,4 +27,14 @@ problem1_df = tibble(
 ```
 
 
+
+_Now, we're taking the mean of each variable in the data frame._
+
+```{r hw1_problem1.2, warning = FALSE} 
+mean(problem1_df$rsamp)
+mean(problem1_df$vec_log)
+mean(problem1_df$vec_char)
+mean(problem1_df$vec_fac)
+
+```
 
