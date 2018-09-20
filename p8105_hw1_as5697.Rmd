@@ -1,6 +1,6 @@
 ---
-title: "Homework 1"
-author: "Apoorva Srinivasan"
+title: "HOMEWORK 1"
+author: "_Apoorva Srinivasan_"
 date: "9/20/2018"
 output: github_document
 ---
@@ -45,7 +45,7 @@ We observe that the random sample and logical vector return a mean of ~2.76 and 
 
 
 _Onto converting variable types_
-```{r hw1_problem1.3, WARNING = FALSE}
+```{r hw1_problem1.3, warning = FALSE}
 as.numeric(problem1_df$vec_log)
 as.numeric(problem1_df$vec_char)
 as.numeric(problem1_df$vec_fac)
@@ -60,7 +60,8 @@ as.numeric(as.factor(problem1_df$vec_char))
 as.numeric(as.character(problem1_df$vec_fac))
 ```
 
-
+In the above output we see that the character vector when converted to factor and then that to numeric gives an output of integers. However, the factor vector when converted to character and then numeric gives NA for each entry.
+When we convert character vector to factor variable, it makes it into some levels. These levels are then assigned numeric values when converted to numeric vector.
 
 
 #PROBLEM 2
@@ -96,7 +97,8 @@ ggplot(problem2_df, aes(x = x, y = y, color = vec_logical)) + geom_point()
 ggsave("logical_scatter_plot.pdf")
 ```
 
-
+From the plot, we can see that a red color is assigned for every value which is FALSE i.e for every value in the random variable where x + y is less than 0 and a blue color is assigned for every TRUE case i.e every value in the logical vector where x + y is greater than 0. 
+We note that the graph is evenly scattered on the both sides of the slope -1 with maximum concentration around (0,0)
 
 Making a scatter plot using the numerical variables.
 
@@ -104,12 +106,14 @@ Making a scatter plot using the numerical variables.
 ggplot(problem2_df, aes(x = x, y = y, color = vec_numerical)) + geom_point()
 ```
 
+In this plot with numeric variables, we observe a gradient being assigned to different range of values with the darkest shade of blue assigned to values close to 0 and the lightest shade for the values near 1.
+Again, the points are evenly distributed across the slope -1 with the maximum concentration around (0,0)
+
 Now, making the scatter plot using the factor variable
 
 ```{r}
 ggplot(problem2_df, aes(x = x, y = y, color = vec_factor)) + geom_point()
 ```
 
-
-
+The plot using factor variables returns the same plot as the previous one usuing logical variables with red assigned for every FALSE case and blue for every BLUE case. This is because the factor vector was created by coercing the above logical vector.
 
