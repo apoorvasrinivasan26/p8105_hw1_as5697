@@ -35,6 +35,7 @@ mean(problem1_df$rsamp)
 mean(problem1_df$vec_log)
 mean(problem1_df$vec_char)
 mean(problem1_df$vec_fac)
-
 ```
+
+We observe that the random sample and logical vector return a value of 1.935042 and 0.4 respectively. However, we do not get any results for the factor and character variables. This is due to a numeric value attached to the first two vectors so mathematical operations on it is made possible. In the case of character and factor variable types, since they contain strings and do not posses a numerical value hence the mean cannot be found. 
 
