@@ -5,7 +5,7 @@ date: "9/20/2018"
 output: github_document
 ---
 
-#Problem 1
+#PROBLEM 1
 
 **This problem focuses on variable types and coercion.**
 
@@ -59,3 +59,59 @@ as.numeric(problem1_df$vec_fac)
 as.numeric(as.factor(problem1_df$vec_char))
 as.numeric(as.character(problem1_df$vec_fac))
 ```
+
+
+
+
+#PROBLEM 2
+
+
+In this section, we're going to create a data frame
+```{r}
+
+library(tidyverse)
+set.seed(1)
+
+problem_df = tibble(
+ x = rnorm(1000),
+ y = rnorm(1000),
+vec_logical = c(x + y > 0),
+vec_numerical = as.numeric(vec_logical),
+vec_factor = as.factor(vec_logical)
+)
+
+```
+
+The size of the dataset is `r length(problem_df$x)`
+
+The mean of x is `r mean(problem_df$x)` and the median is `r median(problem_df$x)`
+
+
+
+
+Making a scatter plot using the logical variable
+```{r}
+
+ggplot(problem_df, aes(x = x, y = y, color = vec_logical)) + geom_point()
+ggsave("logical_scatter_plot.pdf")
+```
+
+
+
+Making a scatter plot using the numerical variables
+
+```{r}
+ggplot(problem_df, aes(x = x, y = y, color = vec_numerical)) + geom_point()
+ggsave("num_scatter_plot.pdf")
+```
+
+Now, making the scatter plot using the factor variable
+
+```{r}
+ggplot(problem_df, aes(x = x, y = y, color = vec_factor)) + geom_point()
+ggsave("factor_scatter_plot.pdf")
+```
+
+
+
+
