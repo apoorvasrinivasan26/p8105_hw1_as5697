@@ -7,12 +7,26 @@ output: github_document
 
 #Problem_1
 
+**This problem focuses on variable types and coercion.**
+
 ##Problem_1.1
 
 
 ```{r hw1_problem1.1, include = FALSE}
-##loading the library tidyverse but not executing the output
+##loading the library tidyverse but not displaying it in the output
  library(tidyverse)
 ```
+
+_The code chunk below creates a data frame of a random sample of size 10, a logical vector indicating whether elements of the sample are greater than 2, a character and a factor vector._
+
+```{r}
+problem1_df = tibble(
+  rsamp = runif(10, 0, 5),
+  vec_log = rsamp > 2,
+  vec_char = c("I", "hope", "I", "did", "okay", "for", "my", "first", "P8105", "homework"),
+  vec_fac = factor(c("heads", "tails", "heads", "heads", "tails", "heads", "tails", "tails", "heads", "tails"))
+)
+```
+
 
 
