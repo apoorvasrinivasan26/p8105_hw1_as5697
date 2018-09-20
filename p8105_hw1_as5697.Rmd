@@ -5,3 +5,14 @@ date: "9/20/2018"
 output: github_document
 ---
 
+#Problem_1
+
+##Problem_1.1
+
+
+```{r hw1_problem1.1, include = FALSE}
+##loading the library tidyverse but not executing the output
+ library(tidyverse)
+```
+
+
